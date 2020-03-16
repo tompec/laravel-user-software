@@ -2,4 +2,6 @@
 
 use Tompec\UserSoftware\UserSoftwareController;
 
-Route::post('/user-software', [UserSoftwareController::class, 'store']);
+Route::middleware(config('user-software.middlewares'))->group(function () {
+    Route::post('/user-software', [UserSoftwareController::class, 'store']);
+});
